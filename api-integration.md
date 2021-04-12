@@ -133,7 +133,7 @@ Reponse:
 ```
 
 ### 4. Withdrawal
-URI: `{{uri}}/deposit-address`
+URI: `{{uri}}/withdraw`
 
 Headers
 
