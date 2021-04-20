@@ -169,7 +169,7 @@ Payload:
 
 | Field name      | Description
 | -------- | ----------- 
-| address | Wallet address
+| address | Wallet address (base58 format)
 | amount | Amount
 | merchant | Merchant id
 | label | The label for the address
@@ -178,6 +178,12 @@ Payload:
 | id | ipn id
 | fee | Fee
 | feef | feef
+| currency | Currency. For example: trx.trc10, usdt.trc20,...
+
+HMAC is calculated with stringied data in the payload encrypted (using SHA512) with your private key.
+
+Stringified data exmaple: 
+address=TG2QgQadkvXgiyoJWQcrvxRmfS4Naq9s2Z&amount=2%2C999.00000000&currency=usdt.trc20&merchant=decda395-c3a4-4808-9032-0c6a6155e00b&label=&txId=8f18d00095f34c8ada2ae107c2ed9e474ac51bf8ca0c66489c6fe698e138f79d&type=deposit&id=2f89c0e0-6993-4da6-99d1-31d6746ef555&fee=0&feef=0.000000
 
 Response: Your ipn callback must return status 2xx for success. Otherwise failed.
 Note: Thecoingate will retry 10 times on fail. 
