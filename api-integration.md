@@ -156,7 +156,28 @@ Headers
 | ipnUrl | The callback URL that you want to receive the instant payment notifications | no
 |label | The label for the address | no
 
+### 5. IPN
+After deposit or withdrawal, Thecoingate system will send an POST request to your ipn url as follow;
+Headers
 
+>  HMAC: `HMAC`
+>
+> Content-Type: application/x-www-form-urlencoded
+>
 
+Payload:
 
-Response: `204 status with no content`
+| Field name      | Description
+| -------- | ----------- 
+| address | Wallet address
+| amount | Amount
+| merchant | Merchant id
+| label | The label for the address
+| txId | Transaction id
+| type | value is "deposit" or "withdrawal"
+| id | ipn id
+| fee | Fee
+| feef | feef
+
+Response: Your ipn callback must return status 2xx for success. Otherwise failed.
+Note: Thecoingate will retry 10 times on fail. 
